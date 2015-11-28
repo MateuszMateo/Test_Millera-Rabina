@@ -1,11 +1,13 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
-    long long n,d,s=0,s2=1;
+    long long n,d;
     int k;
+    bool wynik;
     cout<<"Podaj liczbe do sprawdzenia:"<<endl;
     cin>>n;
     if(n<=3)
@@ -16,16 +18,29 @@ int main()
     else
     cout<<"Podaj dokladnosc testu:"<<endl;
     cin>>k;
-    while ((s2 & (n-1)) == 0)
-    {
-       s  += 1;
-       s2 <<= 1;
+    int s=1;
+    while(((n-1)%pow(2,s))>0){
+       s = s+1;
     }
-    d = n/s2;
-    for (i=0; i<k; i++){
+    s=s-1;
+    d = n/pow(2,s);
+    for(int i=0;i<k;i++){
+        int a=rand()%n;
+        if(pow(a,d)%n==0)
+            wynik=0;
+        else
+            for(int r=0;r<s-1;s++){
+                if(pow(a,d*pow(2,r))==0)
+                    wynik=1;
+                else
+                    wynik=0;
+            }
+    }
+    if(wynik==0)
+        cout<<"liczba nie jest pierwsza"<<endl;
+    if(wynik==1)
+        cout<<"liczba prawdopodobnie pierwsza"<<endl;
 
-    }
-    cout<<s<<endl<<s2<<endl<<d;
     return 0;
 }
 
