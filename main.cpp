@@ -21,12 +21,12 @@ int main()
     bool wynik;
     cout<<"Podaj liczbe do sprawdzenia:"<<endl;
     cin>>n;
-    if(n<=3)
-        cout<<"podana liczba to liczba pierwsza"<<endl;
-    else
-        if(n%2==0)
-            cout<<"podana liczba nie jest liczba pierwsza"<<endl;
-    else
+    if(n<=3){
+        cout<<"podana liczba to liczba pierwsza"<<endl;}
+    else{
+        if(n%2==0){
+            cout<<"podana liczba nie jest liczba pierwsza"<<endl;}
+    else{
     cout<<"Podaj dokladnosc testu:"<<endl;
     cin>>k;
     int s=1;
@@ -37,21 +37,23 @@ int main()
     d = n/potega(2,s);
     for(int i=0;i<k;i++){
         int a=rand()%n;
-        if(potega(a,d)%n==0)
-            wynik=0;
+        if(potega(a,d)%n==0){
+            wynik=0;}
         else
             for(int r=0;r<s-1;s++){
                 if(potega(a,d*potega(2,r))==0)
                     wynik=1;
-                else
+                else{
                     wynik=0;
             }
     }
-    if(wynik==0)
-        cout<<"liczba nie jest pierwsza"<<endl;
-    if(wynik==1)
-        cout<<"liczba prawdopodobnie pierwsza :("<<endl;
+    }
+    if(wynik==0){
+        cout<<"liczba nie jest pierwsza"<<endl;}
+    if(wynik==1){
+        cout<<"liczba prawdopodobnie pierwsza :("<<endl;}
 
     return 0;
 }
-
+    }
+}
