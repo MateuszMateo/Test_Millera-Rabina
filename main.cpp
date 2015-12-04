@@ -30,28 +30,34 @@ int main()
     cout<<"Podaj dokladnosc testu:"<<endl;
     cin>>k;
     int s=1;
-    while(((n-1)%potega(2,s))>0){
+    while(((n-1)%potega(2,s))==0){
        s = s+1;
+       cout << "s=" << s << ", potega(2,s)=" << potega(2,s) << endl;
     }
     s=s-1;
     d = n/potega(2,s);
     for(int i=0;i<k;i++){
         int a=rand()%n;
+        cout<<"| ";
         if(potega(a,d)%n==0){
             wynik=0;}
         else
-            for(int r=0;r<s-1;s++){
-                if(potega(a,d*potega(2,r))==0)
-                    wynik=1;
+            for(int r=0;r<s-1;r++){
+                cout<<".";
+                int o=d*potega(2,r);
+                if(potega(a,o)>1){
+                    cout<<"!";
+                    wynik=1;}
                 else{
+                    cout<<":<";
                     wynik=0;
             }
     }
     }
     if(wynik==0){
-        cout<<"liczba nie jest pierwsza"<<endl;}
+        cout<<"liczba nie jest pierwsza :-("<<endl;}
     if(wynik==1){
-        cout<<"liczba prawdopodobnie pierwsza :("<<endl;}
+        cout<<"liczba prawdopodobnie pierwsza"<<endl;}
 
     return 0;
 }
