@@ -35,11 +35,10 @@ int main()
     }
     s=s-1;
     d = n/potega(2,s);
+    wynik = 0;
     for(int i=0;i<k;i++){
         int a=rand()%n;
-        if(potega(a,d)%n==0){
-            wynik=0;}
-        else
+        if(potega(a,d)%n==1){
             for(int r=0;r<s-1;r++){
                 int o=d*potega(2,r);
                 if(potega(a,o)>1){
@@ -48,9 +47,11 @@ int main()
                     wynik=0;
             }
     }
+
+    }
     }
     if(wynik==0){
-        cout<<"liczba nie jest pierwsza :-("<<endl;}
+        cout<<"liczba nie jest pierwsza"<<endl;}
     if(wynik==1){
         cout<<"liczba prawdopodobnie pierwsza"<<endl;}
 
