@@ -3,20 +3,20 @@
 
 using namespace std;
 
-    long long potega(int d,int f){
-        int g=d;
-        if(f==1)
-            return d;
-        else
-            for(int i=1;i<f;i++){
-                g=g*d;
-            }
-            return g;
-    }
+long long potega(int d,int f){
+    int g=d;
+    if(f==1)
+        return d;
+    else
+        for(int i=1;i<f;i++){
+            g=g*d;
+        }
+    return g;
+}
 
 int main()
 {
-    long long n,d,p;
+    long long n,d;
     int k;
     bool wynik;
     cout<<"Podaj liczbe do sprawdzenia:"<<endl;
@@ -26,48 +26,41 @@ int main()
     else{
         if(n%2==0){
             cout<<"podana liczba nie jest liczba pierwsza"<<endl;}
-    else{
-    cout<<"Podaj dokladnosc testu:"<<endl;
-    cin>>k;
-    int s=1;
-    while(((n-1)%potega(2,s))==0){
-       s = s+1;
-
-    }
-    s=s-1;
-    d = n/potega(2,s);
-    wynik = 0;
-    for(int i=0;i<k;i++){
-        int a=rand()%n;
-        if(potega(a,d)%n==1){
-            wynik=0;
-        }
         else{
-            for(int r=0;r<s-1;r++){
-                int o=d*potega(2,r);
-                if(potega(a,o)>1){
-                    wynik=wynik+1;
-                    p=r;
+            cout<<"Podaj dokladnosc testu:"<<endl;
+            cin>>k;
+            int s=1;
+            while(((n-1)%potega(2,s))==0){
+                s = s+1;
+            }
+            s=s-1;
+            d = n/potega(2,s);
+            wynik = 0;
+            for(int i=0;i<k;i++){
+                int a=rand()%n;
+                if(potega(a,d)%n==1){
+                    wynik=0;
                 }
                 else{
-                    wynik=0;
-                    p=r;
-                    break;
+                    for(int r=0;r<s-1;r++){
+                        int o=d*potega(2,r);
+                        if(potega(a,o)>1){
+                            wynik=1;
+                        }
+                        else{
+                            wynik=0;
+                            break;
+                        }
+                    }
+                }
             }
+            if(wynik==0){
+                cout<<"liczba nie jest pierwsza"<<endl;}
+            else{
+                if(wynik==1){
+                    cout<<"liczba prawdopodobnie pierwsza"<<endl;}
+            }
+            return 0;
+        }
     }
-    }
-    }
-    if(wynik==0){
-        cout<<"liczba nie jest pierwsza"<<endl;}
-    else{
-    if(wynik==p*k){
-        cout<<"liczba prawdopodobnie pierwsza"<<endl;}
-    else{
-        cout<<"liczba nie jest pierwsza."<<endl;
-    }
-    }
-
-    return 0;
-}
-}
 }
