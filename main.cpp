@@ -44,12 +44,13 @@ int main()
                 else{
                     for(int r=0;r<s-1;r++){
                         int o=d*potega(2,r);
-                        if(potega(a,o)%n>n-1){
+                        if(potega(a,o)%n!=n-1){
                             wynik=0;
+                            break;
                         }
                         else{
                             wynik=1;
-                            break;
+
                         }
                     }
                 }
