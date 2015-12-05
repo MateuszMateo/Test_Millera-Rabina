@@ -16,7 +16,7 @@ using namespace std;
 
 int main()
 {
-    long long n,d;
+    long long n,d,p;
     int k;
     bool wynik;
     cout<<"Podaj liczbe do sprawdzenia:"<<endl;
@@ -32,6 +32,7 @@ int main()
     int s=1;
     while(((n-1)%potega(2,s))==0){
        s = s+1;
+
     }
     s=s-1;
     d = n/potega(2,s);
@@ -39,23 +40,34 @@ int main()
     for(int i=0;i<k;i++){
         int a=rand()%n;
         if(potega(a,d)%n==1){
+            wynik=0;
+        }
+        else{
             for(int r=0;r<s-1;r++){
                 int o=d*potega(2,r);
                 if(potega(a,o)>1){
-                    wynik=1;}
+                    wynik=wynik+1;
+                    p=r;
+                }
                 else{
                     wynik=0;
+                    p=r;
+                    break;
             }
     }
-
     }
     }
     if(wynik==0){
         cout<<"liczba nie jest pierwsza"<<endl;}
-    if(wynik==1){
+    else{
+    if(wynik==p*k){
         cout<<"liczba prawdopodobnie pierwsza"<<endl;}
+    else{
+        cout<<"liczba nie jest pierwsza."<<endl;
+    }
+    }
 
     return 0;
 }
-    }
+}
 }
