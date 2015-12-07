@@ -3,13 +3,23 @@
 
 using namespace std;
 
-long long potega(int d,int f){
-    int g=d;
+long long potega(long long d,long long f){
+    long long g=d;
     if(f==1)
         return d;
     else
         for(int i=1;i<f;i++){
             g=g*d;
+        }
+    return g;
+}
+long long potega_modulo(long long d,long long f,long long n){
+    long long g=d;
+    if(f==1)
+        return d%n;
+    else
+        for(int i=1;i<f;i++){
+            g=(g*d)%n;
         }
     return g;
 }
@@ -43,7 +53,7 @@ int main()
                 }
                 else{
                     for(int r=0;r<s-1;r++){
-                        int o=d*potega(2,r);
+                        long long o=d*potega(2,r);
                         if(potega(a,o)%n!=n-1){
                             wynik=0;
                             break;
