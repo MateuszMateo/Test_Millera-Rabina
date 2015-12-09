@@ -29,7 +29,7 @@ long long potega_modulo(long long d,long long f,long long n){
 int main()
 {
     srand(time(0));
-    long long n,d;
+    long long n,d,o;
     int k;
     bool wynik;
     bool czy_swiadek;
@@ -52,13 +52,17 @@ int main()
             wynik = 0;
             for(int i=0;i<k;i++){
                 int a=rand()%(n-1) + 1;
-                if(potega(a,d)%n==1){
+                if(potega_modulo(a,d,n)==1){
                     czy_swiadek=false;
                 }
                 else{
-                    for(int r=0;r<s-1;r++){
-                        long long o=d*potega(2,r);
-                        if(potega(a,o)%n!=n-1){
+                    for(int r=0;r<s;r++){
+                        if(r==0){
+                            o=d*1;
+                        }
+                        else{
+                            o=d*potega(2,r);}
+                        if(potega_modulo(a,o,n)!=n-1){
                             czy_swiadek=true;
                         }
                         else{
@@ -68,11 +72,11 @@ int main()
                         }
                     }
                 }
-                if(czy_swiadek=true){
+                if(czy_swiadek){
                     wynik=0;
                     break;
                 }
-                if(czy_swiadek=false){
+                else{
                     wynik=1;
                 }
             }
