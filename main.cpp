@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -26,9 +28,11 @@ long long potega_modulo(long long d,long long f,long long n){
 
 int main()
 {
+    srand(time(0));
     long long n,d;
     int k;
     bool wynik;
+    bool czy_swiadek;
     cout<<"Podaj liczbe do sprawdzenia:"<<endl;
     cin>>n;
     if(n<=3){
@@ -47,22 +51,29 @@ int main()
             d = n/potega(2,s);
             wynik = 0;
             for(int i=0;i<k;i++){
-                int a=rand()%n;
+                int a=rand()%(n-1) + 1;
                 if(potega(a,d)%n==1){
-                    wynik=0;
+                    czy_swiadek=false;
                 }
                 else{
                     for(int r=0;r<s-1;r++){
                         long long o=d*potega(2,r);
                         if(potega(a,o)%n!=n-1){
-                            wynik=0;
-                            break;
+                            czy_swiadek=true;
                         }
                         else{
-                            wynik=1;
+                            czy_swiadek=false;
+                            break;
 
                         }
                     }
+                }
+                if(czy_swiadek=true){
+                    wynik=0;
+                    break;
+                }
+                if(czy_swiadek=false){
+                    wynik=1;
                 }
             }
             if(wynik==0){
